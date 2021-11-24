@@ -1,5 +1,52 @@
 @import "../../variables.scss";
 
+.container{
+    height: 100%;
+}
+
 .login{
     text-align: center;
+    
+    
+}
+.leftside{
+    // background-image: url('../../greenbg.png');
+    content: "";
+    background-color: $main-green;
+    background-repeat:repeat-x;
+    width: 65%;
+    min-height: 1080px;
+    
+}
+
+.float-child{
+    float: left;
+}
+
+.content{
+    min-height: 1080px;
+    width: 35%;
+    float:right;
+    padding-top: 15em;
+}
+
+.greenbut{
+    background-color: $button-green;
+    border: none;
+    color: $main-white;
+    text-align: center;
+    border-radius: 12px;
+    width: 207px;
+    padding: 0.15em;
+}
+
+.whitebut{
+    background-color: $main-white;
+    border: 1px solid $button-green;
+    color: $button-green;
+    text-align: center;
+    border-radius: 12px;
+    width: 15em;
+    margin-bottom: 10px;
+    padding: 0.15em;
 }

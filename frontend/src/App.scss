@@ -1,4 +1,6 @@
-.App {
+@import "./variables.scss";
+
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +37,16 @@
   to {
     transform: rotate(360deg);
   }
+} */
+
+input{
+  border: 1px solid lightgray;
+  border-radius: 12px;
+  width: 15em;
+  padding: 0.15em;
+  
+}
+
+input::placeholder{
+  color: lightgrey
 }
