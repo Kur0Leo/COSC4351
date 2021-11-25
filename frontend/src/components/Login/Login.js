@@ -12,7 +12,7 @@ function Login(){
                 <h2>Welcome</h2>
                 <input style={{marginBottom: "10px"}} type="Email" placeholder="Email"/><br/>
                 <input style={{marginBottom: "10px"}} type="Password" placeholder="Password"/><br/>
-                <Link to='/RegisteredUser'>
+                <Link to='/RegisteredUserInfo'>
                     <button className="greenbut">Log in</button>
                 </Link>
                 <br/>
