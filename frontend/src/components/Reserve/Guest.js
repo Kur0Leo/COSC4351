@@ -11,10 +11,10 @@ function Guest(){
                 <div className="guest">
                     <h1>Reservation System</h1>
                     <h2>Guest</h2>
-                    <input style={{marginBottom: "10px"}} type="Text" placeholder=" Name"/><br/>
-                    <input style={{marginBottom: "10px"}} type="tel" id="phone" placeholder=" Phone Number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"/><br/>
-                    <input style={{marginBottom: "10px"}} type="Email" placeholder=" Email"/><br/>
-                    <input style={{marginBottom: "10px"}} type="number" placeholder=" No. of Guests" min="1" max="14"/><br/>
+                    <input style={{marginBottom: "10px"}} type="Text" placeholder="Name"/><br/>
+                    <input style={{marginBottom: "10px"}} type="tel" id="phone" placeholder="Phone Number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"/><br/>
+                    <input style={{marginBottom: "10px"}} type="Email" placeholder="Email"/><br/>
+                    <input style={{marginBottom: "10px"}} type="number" placeholder="No. of Guests" min="1" max="14"/><br/>
 
                     <DatePicker
                     style={{marginBottom: "10px", width:"15em", borderRadius: "12px"}}

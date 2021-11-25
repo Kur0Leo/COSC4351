@@ -10,8 +10,8 @@ function Login(){
             <div className="login">
                 <h1>Reservation System</h1>
                 <h2>Welcome</h2>
-                <input style={{marginBottom: "10px"}} type="Email" placeholder=" Email"/><br/>
-                <input style={{marginBottom: "10px"}} type="Password" placeholder=" Password"/><br/>
+                <input style={{marginBottom: "10px"}} type="Email" placeholder="Email"/><br/>
+                <input style={{marginBottom: "10px"}} type="Password" placeholder="Password"/><br/>
                 <Link to='/RegisteredUser'>
                     <button className="greenbut">Log in</button>
                 </Link>
