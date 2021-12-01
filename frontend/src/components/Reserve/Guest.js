@@ -1,10 +1,12 @@
 import React, { useEffect, useState }  from "react";
 import "./Guest.scss";
+import { Link, useNavigate } from "react-router-dom";
 import {DatePicker, TimePicker, Select } from 'antd';
 import Tablespic from './Tablespic';
 import db from '../../firebase-config';
 import { collection, onSnapshot, addDoc, setDoc, doc } from "@firebase/firestore";
-import {Link} from "react-router-dom";
+//import {Link} from "react-router-dom";
+import { Navigate } from "react-router";
 
 function Guest(){
     const [value, onChange] = useState(new Date());
@@ -15,6 +17,7 @@ function Guest(){
     const [ numGuests, setnumGuests ] = useState();
     const [ date, setDate ] = useState(new Date());
     const [ time, setTime ] = useState();
+    const navigate = useNavigate()
 
     //console.log(reservation);
     {/*
@@ -32,13 +35,22 @@ function Guest(){
         console.log(date);
         const dateValue = date.format();
         const timeValue = time.format();
+        var newDate = new Date(dateValue);
+        let day = newDate.getDay();
 
-        const collectionRef = collection(db, "reservations");
+        if(day == 6 || day == 0){
+            alert ("Must be registered and have a valid credit card in the system to reserve on weekends!");
+            navigate('/Signup');
+        }
+        else{
+            const collectionRef = collection(db, "reservations");
 
-        const payload = { name, email, phoneNum, numGuests, dateValue, timeValue };
-        const docRef = await addDoc(collectionRef, payload);
-        console.log("The new id is: " + docRef.id);
-        alert("Reservation completed.")
+            const payload = { name, email, phoneNum, numGuests, dateValue, timeValue };
+            const docRef = await addDoc(collectionRef, payload);
+            console.log("The new id is: " + docRef.id);
+            alert("Registration Successful!")
+            navigate('/confirmation');
+        } 
     };
 
     {/*const handleEdit = async (id) => {

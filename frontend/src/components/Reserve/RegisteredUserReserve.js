@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {DatePicker, TimePicker, Select } from 'antd';
 import './RegisteredUser.scss';
+import { Link, useNavigate } from "react-router-dom";
 import Tablespic from './Tablespic';
 import db from '../../firebase-config';
 import { auth, useAuth } from '../../firebase-config.js'
@@ -12,12 +13,16 @@ function RegisteredUserReserve(){
     const [ numGuests, setnumGuests ] = useState();
     const [ date, setDate ] = useState(new Date());
     const [ time, setTime ] = useState();
+    const navigate = useNavigate()
 
     const onSubmit = async (e) => {
         e.preventDefault();
         console.log(date);
         const dateValue = date.format();
         const timeValue = time.format();
+        var newDate = new Date(dateValue);
+        let day = newDate.getDay();
+        if(day == 6 || day == 0) alert ("Because it is a high traffic day, a no show will result in a minimum charge of $10");
 
         const uid = auth.currentUser.uid;
         const collectionRef = collection(db, "reservations");
@@ -26,6 +31,7 @@ function RegisteredUserReserve(){
         const docRef = await addDoc(collectionRef, payload);
         console.log("The new id is: " + docRef.id);
         alert("Reservation completed.")
+        navigate('/confirmation');
     };
 
     const { Option } = Select;
