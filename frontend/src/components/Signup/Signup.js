@@ -4,47 +4,51 @@ import { Link } from "react-router-dom";
 import { useRef, useState } from "react";
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
 import { auth, useAuth } from '../../firebase-config.js'
+import db from '../../firebase-config';
+import { addDoc, collection } from 'firebase/firestore';
+
+
 
 function Signup(){
-
+    const firstNameRef = useRef();
+    const lastNameRef = useRef();
     const emailRef = useRef();
     const passwordRef = useRef();
     const passwordConfirmRef = useRef();
 
+    const [ firstName, setfirstName ] = useState();
+    const [ lastName, setlastName ] = useState();
+    const [ email, setEmail ] = useState();
+
     const auth = getAuth()
     const currentUser = useAuth()
-    {/*const [PasswordConfirm, setPasswordConfirm] = useState("")
-    const [PasswordConfirm, setPasswordConfirm] = useState("")
-
-    const [firstName, setfirstName] = useState("")
-    const [lastName, setlastName] = useState("")*/}
     const [loading, setLoading] = useState(false)
 
-    const register = async () => {
+    const register = async (e) => {
+        e.preventDefault();
 
         if (passwordRef.current.value !== passwordConfirmRef.current.value) {
             alert('Passwords do not match.')
         }
-        setLoading(true)
-        {/*//await createUserWithEmailAndPassword(auth, emailRef.current.value, passwordRef.current.value);
-        try {
-            
-        //function auto logins them in after signup
-        const user = await createUserWithEmailAndPassword(emailRef.current.value, passwordRef.current.value
-        );
-        console.log(user)
-        } catch (error) {
-            alert('Failed to create an account.');
-        }
-    setLoading(false)*/}
-
 
         try {
-            setLoading(true)
-            await createUserWithEmailAndPassword(auth, emailRef.current.value, passwordRef.current.value)
-        } catch {
+            //setLoading(true)
+            await createUserWithEmailAndPassword(auth, emailRef.current.value, passwordRef.current.value);
+            const uid = auth.currentUser.uid;
+            const docRef = await addDoc(collection(db,"users"), {
+                uid,
+                firstName,
+                lastName,
+                email,
+            });
+
+            console.log("Doc with new ID:", docRef.id);
+        } catch (err) {
+            console.error(err)
             alert("Failed to create an account.")
         }
+
+        
     };
 
 
@@ -55,13 +59,15 @@ function Signup(){
                 <div className="signup">
                     <h1>Reservation System</h1>
                     <h2>Sign Up</h2>
-                    {currentUser}
-                    <input style={{marginBottom: "10px"}} type="text" placeholder="First Name" required /><br/>
-                    <input style={{marginBottom: "10px"}} type="text" placeholder="Last Name"  required /><br/>
-                    <input style={{marginBottom: "10px"}} type="Email" placeholder="Email"  ref={emailRef} required /><br/>
+                    <input style={{marginBottom: "10px"}} type="text" placeholder="First Name" ref={firstNameRef} required onChange={(e) => {setfirstName(e.target.value);}}/><br/>
+                    <input style={{marginBottom: "10px"}} type="text" placeholder="Last Name"  ref={lastNameRef} required onChange={(e) => {setlastName(e.target.value);}}/><br/>
+                    <input style={{marginBottom: "10px"}} type="Email" placeholder="Email"  ref={emailRef} required onChange={(e) => {setEmail(e.target.value);}}/><br/>
                     <input style={{marginBottom: "10px"}} type="Password" placeholder="Password" ref={passwordRef} required /><br/>
                     <input style={{marginBottom: "10px"}} type="Password" placeholder="Confirm Password" ref={passwordConfirmRef} required/><br/>
+
+                    <Link to= '/RegisteredUserInfo'>
                     <button className="greenbut" disabled={loading} onClick={register}>Sign Up</button>
+                    </Link>
                 </div>
             </div>
         </div>

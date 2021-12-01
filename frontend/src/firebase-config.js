@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { useEffect, useState } from 'react';
+import { getFirestore } from 'firebase/firestore';
 
 import { getAuth, onAuthStateChanged } from 'firebase/auth'
 
@@ -29,3 +30,5 @@ export function useAuth() {
     })
     return currentUser;
 }
+
+export default getFirestore();
