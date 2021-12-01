@@ -5,6 +5,7 @@ import Login from "./components/Login/Login";
 import Signup from "./components/Signup/Signup";
 import Guest from "./components/Reserve/Guest";
 import RegisteredUserInfo from './components/Reserve/RegisteredUserInfo';
+import RegisteredUserReserve from './components/Reserve/RegisteredUserReserve';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Route path="/signup" element={ <Signup />} />
       <Route path="/guest" element={ <Guest />} />
       <Route path="/registereduserinfo" element={<RegisteredUserInfo/>}/>
+      <Route path="/registereduserreserve" element={<RegisteredUserReserve/>}/>
       </Routes>
     </Router>
     
