@@ -16,6 +16,7 @@
     width: 65%;
     min-height: 1080px;
     z-index: -1;
+    text-align: center;
 }
 
 .float-child{
@@ -45,4 +46,8 @@ p2{
 
 p1{
     font-weight: 400;
+}
+
+.h{
+    color: white;
 }
