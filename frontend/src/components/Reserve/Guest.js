@@ -26,6 +26,7 @@ function Guest(){
         []
     );*/}
 
+    
     const onSubmit = async (e) => {
         e.preventDefault();
         console.log(date);
@@ -39,7 +40,7 @@ function Guest(){
         console.log("The new id is: " + docRef.id);
         alert("Reservation completed.")
     };
-    
+
     {/*const handleEdit = async (id) => {
         const docRef = doc(db, "reservations", id);
 
@@ -76,6 +77,7 @@ function Guest(){
                     onChange={time => setTime(time)} 
                     /> 
                     <br/>
+
                     <button className="greenbut" onClick={onSubmit}>Reserve</button>
                 </div>
             </div>

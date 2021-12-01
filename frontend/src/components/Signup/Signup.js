@@ -1,6 +1,6 @@
 import React from "react";
 import "./Signup.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useRef, useState } from "react";
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
 import { auth, useAuth } from '../../firebase-config.js'
@@ -22,7 +22,8 @@ function Signup(){
 
     const auth = getAuth()
     const currentUser = useAuth()
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(false);
+    const navigate = useNavigate();
 
     const register = async (e) => {
         e.preventDefault();
@@ -48,7 +49,7 @@ function Signup(){
             alert("Failed to create an account.")
         }
 
-        
+        navigate('/RegisteredUserInfo');
     };
 
 
@@ -65,8 +66,8 @@ function Signup(){
                     <input style={{marginBottom: "10px"}} type="Password" placeholder="Password" ref={passwordRef} required /><br/>
                     <input style={{marginBottom: "10px"}} type="Password" placeholder="Confirm Password" ref={passwordConfirmRef} required/><br/>
 
-                    <Link to= '/RegisteredUserInfo'>
-                    <button className="greenbut" disabled={loading} onClick={register}>Sign Up</button>
+                    <Link to='/Login'>
+                    <button className="greenbut"  onClick={register}>Sign Up</button>
                     </Link>
                 </div>
             </div>

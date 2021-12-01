@@ -1,9 +1,8 @@
 import React from "react";
 import "./Login.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { signInWithEmailAndPassword } from "@firebase/auth";
-import { useNavigate } from 'react-router-dom';
 import {auth} from '../../firebase-config.js'
 
 
