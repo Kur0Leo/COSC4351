@@ -1,13 +1,12 @@
 import React, { useEffect, useState }  from "react";
 import "./Guest.scss";
-import {DatePicker, TimePicker } from 'antd';
+import {DatePicker, TimePicker, Select, Space } from 'antd';
 import Tablespic from './Tablespic';
 import db from '../../firebase-config';
 import { collection, onSnapshot, addDoc, setDoc, doc } from "@firebase/firestore";
 
 function Guest(){
     const [value, onChange] = useState(new Date());
-
     const [reservation, setReservation ] = useState([]);
     const [ name, setName ] = useState();
     const [ email, setEmail ] = useState();
@@ -49,6 +48,14 @@ function Guest(){
 
         setDoc(docRef, payload);
     };*/}
+    const { Option } = Select;
+    const children = [];
+    for (let i = 1; i <=6; i++) {
+        children.push(<Option key={i}>{i}</Option>);
+      }
+    function handleChange(value) {
+        console.log(`selected ${value}`);
+      }
 
     return(
         <div className="container" >
@@ -77,6 +84,20 @@ function Guest(){
                     onChange={time => setTime(time)} 
                     /> 
                     <br/>
+                    <Space direction="vertical" style={{marginBottom: "10px", width:"15em", borderRadius: "12px"}}>
+                    <Select 
+                    
+                    mode="multiple"
+                    allowClear
+                    style={{ width: '100%' }}
+                    placeholder="Select your table number(s)"
+                    // defaultValue={['a10', 'c12']}
+                    onChange={handleChange}
+                    >
+                    {children}
+                    </Select>
+                    </Space>
+                    <br />
 
                     <button className="greenbut" onClick={onSubmit}>Reserve</button>
                 </div>
