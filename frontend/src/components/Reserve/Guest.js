@@ -36,6 +36,7 @@ function Guest(){
         const dateValue = date.format();
         const timeValue = time.format();
         var newDate = new Date(dateValue);
+        var newTime = newDate.getTime();
         let day = newDate.getDay();
 
         if(day == 6 || day == 0){
@@ -45,7 +46,7 @@ function Guest(){
         else{
             const collectionRef = collection(db, "reservations");
 
-            const payload = { name, email, phoneNum, numGuests, dateValue, timeValue };
+            const payload = { name, email, phoneNum, numGuests, newDate, newTime };
             const docRef = await addDoc(collectionRef, payload);
             console.log("The new id is: " + docRef.id);
             alert("Registration Successful!")
