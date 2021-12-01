@@ -4,6 +4,7 @@ import {DatePicker, TimePicker, Select } from 'antd';
 import Tablespic from './Tablespic';
 import db from '../../firebase-config';
 import { collection, onSnapshot, addDoc, setDoc, doc } from "@firebase/firestore";
+import {Link} from "react-router-dom";
 
 function Guest(){
     const [value, onChange] = useState(new Date());
@@ -96,8 +97,9 @@ function Guest(){
                     {children}
                     </Select>
                     <br />
-
+                    <Link to='/Confirmation'>
                     <button className="greenbut" onClick={onSubmit}>Reserve</button>
+                    </Link>
                 </div>
             </div>
         </div>
