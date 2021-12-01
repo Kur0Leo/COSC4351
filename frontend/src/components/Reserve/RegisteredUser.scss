@@ -14,7 +14,7 @@
     background-repeat:repeat-x;
     width: 65%;
     min-height: 1080px;
-    
+    z-index: -1;
 }
 
 .float-child{
@@ -27,4 +27,14 @@
     float:right;
     padding-top: 15em;
     
+}
+
+.greenbut{
+    background-color: $button-green;
+    border: none;
+    color: $main-white;
+    text-align: center;
+    border-radius: 12px;
+    width: 15em;
+    padding: 0.15em;
 }

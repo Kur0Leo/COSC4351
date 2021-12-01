@@ -1,0 +1,20 @@
+@import "../../variables.scss";
+
+.columns {
+    float: left;
+    width: 50%;
+    text-align: center;
+  }
+
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  img{
+    margin-top: 5em;
+    margin-bottom: 5em;
+
+  }
+

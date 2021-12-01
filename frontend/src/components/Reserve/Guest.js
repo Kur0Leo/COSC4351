@@ -1,12 +1,15 @@
 import React, { useState }  from "react";
 import "./Guest.scss";
 import {DatePicker, TimePicker } from 'antd';
+import Tablespic from './Tablespic';
 
 function Guest(){
     const [value, onChange] = useState(new Date());
     return(
         <div className="container" >
-            <div className="float-child leftside" ></div>
+            <div className="float-child leftside" >
+                <Tablespic/>
+            </div>
             <div className="content">
                 <div className="guest">
                     <h1>Reservation System</h1>

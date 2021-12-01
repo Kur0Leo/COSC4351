@@ -3,6 +3,7 @@ import './RegisteredUser.scss';
 import { EditText, EditTextarea } from 'react-edit-text';
 import 'react-edit-text/dist/index.css';
 import {Checkbox} from 'antd';
+import {Link} from "react-router-dom";
 
 
 function RegisteredUserInfo(){
@@ -32,6 +33,10 @@ function RegisteredUserInfo(){
                 <br/><strong><label>Zip Code: </label></strong>
                 <EditText type="text" style={{width: '15em'}} defaultValue="77004" inline/>
                 <br/><Checkbox>Check if mailing address is the same as your billing address</Checkbox>
+                <br/>
+                <Link to="/RegisteredUserReserve">
+                <button className="greenbut">Next</button>
+                </Link>
                 </div>
             </div>
         </div>
