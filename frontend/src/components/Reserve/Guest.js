@@ -1,6 +1,6 @@
 import React, { useEffect, useState }  from "react";
 import "./Guest.scss";
-import {DatePicker, TimePicker, Select, Space } from 'antd';
+import {DatePicker, TimePicker, Select } from 'antd';
 import Tablespic from './Tablespic';
 import db from '../../firebase-config';
 import { collection, onSnapshot, addDoc, setDoc, doc } from "@firebase/firestore";
@@ -84,19 +84,17 @@ function Guest(){
                     onChange={time => setTime(time)} 
                     /> 
                     <br/>
-                    <Space direction="vertical" style={{marginBottom: "10px", width:"15em", borderRadius: "12px"}}>
                     <Select 
                     
                     mode="multiple"
                     allowClear
-                    style={{ width: '100%' }}
+                    style={{marginBottom: "10px", width:"15em", borderRadius: "12px"}}
                     placeholder="Select your table number(s)"
                     // defaultValue={['a10', 'c12']}
                     onChange={handleChange}
                     >
                     {children}
                     </Select>
-                    </Space>
                     <br />
 
                     <button className="greenbut" onClick={onSubmit}>Reserve</button>

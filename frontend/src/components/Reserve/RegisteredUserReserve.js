@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {DatePicker, TimePicker, Select, Space } from 'antd';
+import {DatePicker, TimePicker, Select } from 'antd';
 import './RegisteredUser.scss';
 import Tablespic from './Tablespic';
 import db from '../../firebase-config';
@@ -45,7 +45,7 @@ function RegisteredUserReserve(){
             <div className="content">
                 <div className="user">
                     <h1>Reservation System</h1>
-                    <h2>Guest</h2>
+                    <h2>Registered User</h2>
                     <input style={{marginBottom: "10px"}} type="number" placeholder="No. of Guests" min="1" max="14"
                     required onChange={(e) => {setnumGuests(e.target.value);}} />
                     <br/>
@@ -62,19 +62,17 @@ function RegisteredUserReserve(){
                     selected={time}
                     onChange={time => setTime(time)} />
                     <br/>
-                    <Space direction="vertical" style={{marginBottom: "10px", width:"15em", borderRadius: "12px"}}>
                     <Select 
                     
                     mode="multiple"
                     allowClear
-                    style={{ width: '100%' }}
+                    style={{marginBottom: "10px", width:"15em", borderRadius: "12px"}}
                     placeholder="Select your table number(s)"
                     // defaultValue={['a10', 'c12']}
                     onChange={handleChange}
                     >
                     {children}
                     </Select>
-                    </Space>
                     <br />
                     <button className="greenbut" onClick={onSubmit}>Reserve</button>
                 </div>
